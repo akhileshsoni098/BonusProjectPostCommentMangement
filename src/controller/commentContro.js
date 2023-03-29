@@ -3,9 +3,13 @@ const ReplyCommentModel = require("../model/replyComment")
 const PostModel = require("../model/postModel");
 const CommentModel = require("../model/comment");
 
+
 const createComment = async function (req, res) {
   try {
     let postId = req.params.postId;
+ let ExistId = await PostModel.findById(postId)
+
+if(!ExistId){return res.status(404).send({status:false , message:" id doesn't exist"})}
 
     if (!isValidObjectId(postId)) {
       return res
@@ -57,6 +61,8 @@ const replyComment = async function (req, res) {
   try {
     let commentId = req.params.commentId;
 
+    let existCmnt = await CommentModel.findById(commentId)
+if(!existCmnt){return res.status(404).send({status:false , message:"comment id not exsist"})}
     if (!isValidObjectId(commentId)) {
       return res
         .status(400)

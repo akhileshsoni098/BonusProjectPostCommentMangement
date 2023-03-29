@@ -20,6 +20,10 @@ post:{
 replyComment:{
     type:ObjectId,
     ref:"ReplyComment"
+},
+isDeleted:{
+    type:Boolean,
+    default:false
 }
 })
 

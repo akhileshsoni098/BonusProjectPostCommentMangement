@@ -20,8 +20,11 @@ createdAt:{type: Date,
 commentId:{
     type:ObjectId,
     ref:"Comment"
+},
+isDeleted:{
+    type:Boolean,
+    default:false
 }
-
 })
 
 module.exports = mongoose.model("Post", postSchema)
