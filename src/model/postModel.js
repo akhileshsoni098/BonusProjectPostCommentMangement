@@ -1,35 +1,20 @@
-const mongoose = require("mongoose")
-let ObjectId = mongoose.Schema.Types.ObjectId
+const mongoose = require("mongoose");
+let ObjectId = mongoose.Schema.Types.ObjectId;
 const postSchema = mongoose.Schema({
+  name: { type: String, required: true },
 
+  title: { type: String, required: true },
+  content: { type: String, required: true },
 
-name:{type:String,
-    required: true
-},
+  createdAt: { type: Date, default: Date.now },
+  commentId: {
+    type: ObjectId,
+    ref: "Comment",
+  },
+  isDeleted: {
+    type: Boolean,
+    default: false,
+  },
+});
 
-title:{type:String,
-    required: true
-},
-content:{type:String, 
-required: true 
-},
-
-createdAt:{type: Date, 
-    default: Date.now
-},
-commentId:{
-    type:ObjectId,
-    ref:"Comment"
-},
-isDeleted:{
-    type:Boolean,
-    default:false
-}
-})
-
-module.exports = mongoose.model("Post", postSchema)
-
-
-
-
-
+module.exports = mongoose.model("Post", postSchema);
