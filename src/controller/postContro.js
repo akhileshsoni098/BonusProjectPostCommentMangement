@@ -182,7 +182,7 @@ const deletePost = async function (req, res) {
       { isDeleted: true }
     );
 
-    res.status(200).send({ status: false, message: "successfully deleted" });
+    res.status(200).send({ status: true, message: "successfully deleted" });
   } catch (err) {
     res.status(500).send({ status: false, message: err.message });
   }
